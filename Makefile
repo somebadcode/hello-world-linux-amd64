@@ -6,7 +6,7 @@ all: hello
 
 main.o: src/main.asm
 	@mkdir ./build
-	@$(ASM) -f elf64 -O0 -o build/main.o src/main.asm
+	@$(ASM) -f elf64 -o build/main.o src/main.asm
 
 hello: main.o
 	@mkdir ./bin
