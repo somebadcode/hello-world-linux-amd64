@@ -23,7 +23,7 @@ Linux for 64-bit x86
 ### Without make
 ```
 mkdir --parents --verbose ./{build,bin}
-nasm -f elf64 -O0 -o build/main.o src/main.asm
+nasm -f elf64 -o build/main.o src/main.asm
 ld --strip-all -static --no-dynamic-linker --pic-executable --output bin/hello build/main.o
 ```
 
