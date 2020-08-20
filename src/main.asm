@@ -19,17 +19,17 @@ SECTION .text
     mov rdx, message.length ; the length of the buffer
     syscall
 
-    ; Since all register except rax, rcx and r11 are preserved, the length of
-    ; the message is still stored inside rdx and this enables us to directly
-    ; compare the return value with the expected value (the length). This saves
-    ; us one instruction below.
-    ; In addition, a conditional move instead of a jump enables us to avoid
-    ; a branch.
+    ; Since only rax, rcx and r11 are preserved, the length of
+    ; the message remains in rdx and this enables us to directly
+    ; compare the return value with the expected value (the length).
+    ; This saves us one instruction. Includes a conditional
+    ; move instead of a jump which acounts avoid a branch.
 
-    xor rdi, rdi       ; default exit code
-    mov rcx, 1         ; error exit code
-    cmp rax, rdx       ; check if bytes written == length
-    cmovne rdi, rcx    ; non-zero exit code if bytes written != length
+    xor rdi, rdi       ; default exit code (zero).
+    mov rcx, 1         ; error exit code (1, non-zero).
+    cmp rax, rdx       ; check if bytes written == length.
+    cmovne rdi, rcx    ; non-zero exit code if bytes written != length.
 
     mov rax, __NR_EXIT
     syscall
+
