@@ -22,8 +22,8 @@ SECTION .text
     ; Since only rax, rcx and r11 are preserved, the length of
     ; the message remains in rdx and this enables us to directly
     ; compare the return value with the expected value (the length).
-    ; This saves us one instruction. Includes a conditional
-    ; move instead of a jump which acounts avoid a branch.
+    ; This saves us one instruction. Uses a conditional
+    ; move instead of a conditional jump which avoids a branch.
 
     xor rdi, rdi       ; default exit code (zero).
     mov rcx, 1         ; error exit code (1, non-zero).
