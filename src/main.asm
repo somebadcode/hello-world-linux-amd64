@@ -19,7 +19,7 @@ SECTION .text
     mov rdx, message.length ; the length of the buffer
     syscall
 
-    ; Since all registers eexcept rax, rcx and r11 are preserved,
+    ; Since all registers except rax, rcx and r11 are preserved,
     ; the length of the message remains in rdx and this enables us to
     ; directly compare the return value with the expected value (the length).
     ; This saves us one instruction. Using a conditional move instead of a
